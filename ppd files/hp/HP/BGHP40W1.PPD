@@ -1,0 +1,634 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems PostScript(R) Printer Description File
+*% Copyright 1987-1995 Adobe Systems Incorporated. 
+*% All Rights Reserved. 
+*% Permission is granted for redistribution of this file as
+*% long as this copyright notice is intact and the contents
+*% of the file is not altered in any way from its original form.
+*% End of Copyright statement
+
+
+*% All Rights Reserved. 
+
+*% Permission is granted for redistribution of this file as
+
+*% long as this copyright notice is intact and the contents
+
+*% of the file is not altered in any way from its original form.
+
+*% End of Copyright statement
+
+*FormatVersion: "4.3"
+
+*FileVersion: "1.0"
+
+*PCFileName: "BGHP50W1.PPD"
+
+*LanguageEncoding: ISOLatin1
+
+*LanguageVersion: English
+
+*Product: "(Birmy PowerRIP)"
+
+*PSVersion: "(2013.114) 9"
+
+*ModelName: "Birmy PowerRIP (HP 400)"
+
+*ShortNickName: "PowerRIP For HP 400"
+
+*NickName: "Birmy PowerRIP (HP 400)"
+
+
+
+*%  Options and Constraints ===============
+
+
+
+*% General Information and Defaults ===============
+
+*ColorDevice: True
+
+*DefaultColorSpace: CMYK
+
+*DefaultHalftoneType: 5
+
+*Manufacturer: "Hewlet Packard"
+
+*FreeVM: "1000000"
+
+*LanguageLevel: "2"
+
+*FileSystem: True
+
+*?FileSystem: "
+
+save
+
+  statusdict /diskonline get exec {(True)}{(False)} ifelse = flush
+
+restore
+
+"
+
+*End
+
+*Throughput: "1"
+
+*Password: "0"
+
+*ExitServer: "
+
+  count 0 eq {  % is the password on the stack?
+
+    true
+
+  }{
+
+    dup    % potential password
+
+    statusdict /checkpassword get exec not
+
+  } ifelse
+
+  {  %  if no password or not valid
+
+    (WARNING : Cannot perform the exitserver command.) =
+
+    (Password supplied is not valid.) =
+
+    (Please contact the author of this software.) = flush
+
+    quit
+
+  } if
+
+  serverdict /exitserver get exec
+
+"
+
+*End
+
+
+
+*OpenUI *Resolution/Choose Resolution: PickOne
+
+*OrderDependency: 10 AnySetup *Resolution
+
+*DefaultResolution: 300dpi
+
+*Resolution 150dpi: "1 dict dup /HWResolution [150 150] put setpagedevice"
+
+*Resolution 300dpi: "1 dict dup /HWResolution [300 300] put setpagedevice"
+
+*?Resolution: "
+
+save
+
+  initgraphics
+
+  0 0 moveto currentpoint matrix defaultmatrix transform
+
+  0 72 lineto currentpoint matrix defaultmatrix transform
+
+  3 -1 roll sub dup mul
+
+  3 1 roll exch sub dup mul
+
+  add sqrt round cvi
+
+  (          ) cvs print (dpi) = flush
+
+restore
+
+"
+
+*End
+
+*CloseUI: *Resolution
+
+
+
+*% Halftone Information ===============
+
+*AccurateScreensSupport: False
+
+*ScreenFreq: "65"
+
+*ScreenAngle: "45"
+
+*ResScreenFreq 150dpi: "65"
+
+*ResScreenFreq 300dpi: "65"
+
+*ResScreenAngle 150dpi: "45"
+
+*ResScreenAngle 300dpi: "45"
+
+*DefaultScreenProc: Dot
+
+*ScreenProc Dot: "
+
+{abs exch abs 2 copy add 1 gt {1 sub dup mul exch 1 sub dup mul add 1
+
+sub }{dup mul exch dup mul add 1 exch sub }ifelse }
+
+"
+
+*End
+
+*ScreenProc Line: "{ pop }"
+
+*ScreenProc Ellipse: "{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+
+
+
+*DefaultTransfer: Null
+
+*Transfer Null: "{ }"
+
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+
+
+*% Paper Handling ===================
+
+*% Use these entries to set paper size most of the time, unless there is
+
+*% specific reason to use PageRegion.
+
+*OpenUI *PageSize: PickOne
+
+*OrderDependency: 30 AnySetup *PageSize
+
+*DefaultPageSize: Letter
+
+*PageSize Letter/US Letter: "
+
+    2 dict dup /PageSize [612 792] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize Legal: "
+
+	2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize A4: "
+
+	2 dict dup /PageSize [595 842] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize Statement: "
+
+	2 dict dup /PageSize [396 612] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize Executive: "
+
+	2 dict dup /PageSize [522 756] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize Env10/No.10 Envelope: "
+
+	2 dict dup /PageSize [297 684] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize EnvDL/DL Envelope: "
+
+	2 dict dup /PageSize [312 624] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageSize EnvC5/C5 Envelope: "
+
+	2 dict dup /PageSize [459 649] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+
+
+*?PageSize: "
+
+  save
+
+   currentpagedevice /PageSize get aload pop
+
+   2 copy gt {exch} if 
+
+   (Unknown) 
+
+  8 dict
+
+	dup [612 792] (Letter) put
+
+	dup [612 1008] (Legal) put
+
+	dup [595 842] (A4) put
+
+	dup [396 612] (Statement) put
+
+	dup [522 756] (Executive) put
+
+	dup [297 684] (Env10) put
+
+	dup [312 624] (EnvDL) put
+
+	dup [459 649] (EnvC5) put
+
+ { exch aload pop 4 index sub abs 5 le exch 
+
+   5 index sub abs 5 le and 
+
+      {exch pop exit} {pop} ifelse
+
+   } bind forall
+
+   = flush pop pop
+
+   restore
+
+"
+
+*End
+
+*CloseUI: *PageSize
+
+
+
+*% These entries will set up the frame buffer. Usually used with manual feed.
+
+*OpenUI *PageRegion: PickOne
+
+*OrderDependency: 40 AnySetup *PageRegion
+
+*DefaultPageRegion: Letter
+
+*PageRegion Letter/US Letter: "
+
+	2 dict dup /PageSize [612 792] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion Legal: "
+
+	2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion A4: "
+
+	2 dict dup /PageSize [595 842] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion Statement: "
+
+	2 dict dup /PageSize [396 612] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion Executive: "
+
+	2 dict dup /PageSize [522 756] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion Env10/No.10 Envelope: "
+
+	2 dict dup /PageSize [297 684] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion EnvDL/DL Envelope: "
+
+	2 dict dup /PageSize [312 624] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*PageRegion EnvC5/C5 Envelope: "
+
+	2 dict dup /PageSize [459 649] put dup /ImagingBBox null put setpagedevice"
+
+*End
+
+*CloseUI: *PageRegion
+
+
+
+*% The following entries provide information about specific paper keywords.
+
+*DefaultImageableArea: Letter
+
+*ImageableArea Letter/US Letter:				"9 40 585 783"
+
+*ImageableArea Legal: 							"9 40 585 999"
+
+*ImageableArea A4:								"9 40 585 833"
+
+*ImageableArea Statement:						"9 40 387 603"
+
+*ImageableArea Executive:						"9 40 513 747"
+
+*ImageableArea Env10/No.10 Envelope:		"9 40 288 585"
+
+*ImageableArea EnvDL/DL Envelope:			"9 40 303 585"
+
+*ImageableArea EnvC5/C5 Envelope:			"9 40 459 585"
+
+
+
+*?ImageableArea: "
+
+save
+
+  /cvp {(                ) cvs print ( ) print } bind def
+
+  /upperright {10000 mul floor 10000 div} bind def
+
+  /lowerleft {10000 mul ceiling 10000 div} bind def
+
+  newpath clippath pathbbox
+
+  4 -2 roll exch 2 {lowerleft cvp} repeat
+
+  exch 2 {upperright cvp} repeat flush
+
+ restore
+
+"
+
+*End
+
+
+
+*% These provide the physical dimensions of the paper (by keyword)
+
+*DefaultPaperDimension: Letter
+
+*PaperDimension Letter/US Letter:				"612 792"
+
+*PaperDimension Legal:							"612 1008"
+
+*PaperDimension A4:								"595 842"
+
+*PaperDimension Statement:						"396 612"
+
+*PaperDimension Executive:						"522 756"
+
+*PaperDimension Env10/No.10 Envelope:			"297 684"
+
+*PaperDimension EnvDL/DL Envelope:				"312 624"
+
+*PaperDimension EnvC5/C5 Envelope:				"459 649"
+
+
+
+*RequiresPageRegion All: True
+
+*OpenUI *InputSlot: PickOne
+
+*OrderDependency: 20 AnySetup *InputSlot
+
+*DefaultInputSlot: Cassette
+
+*InputSlot Cassette: ""
+
+*CloseUI: *InputSlot
+
+
+
+*DefaultOutputOrder: Reverse
+
+
+
+*% Font Information =====================
+
+*DefaultFont: Courier
+
+*Font Courier: Standard "(002.004)" Standard ROM
+
+*Font Courier-Bold: Standard "(002.004)" Standard ROM
+
+*Font Courier-BoldOblique: Standard "(002.004)" Standard ROM
+
+*Font Courier-Oblique: Standard "(002.004)" Standard ROM
+
+*Font Helvetica: Standard "(001.006)" Standard ROM
+
+*Font Helvetica-Bold: Standard "(001.006)" Standard ROM
+
+*Font Helvetica-BoldOblique: Standard "(001.006)" Standard ROM
+
+*Font Helvetica-Oblique: Standard "(001.006)" Standard ROM
+
+*Font Symbol: Special "(001.007)" Special ROM
+
+*Font Times-Bold: Standard "(001.007)" Standard ROM
+
+*Font Times-BoldItalic: Standard "(001.007)" Standard ROM
+
+*Font Times-Italic: Standard "(001.007)" Standard ROM
+
+*Font Times-Roman: Standard "(001.007)" Standard ROM
+
+*?FontQuery: "
+
+ save
+
+   { count 1 gt
+
+      { exch dup 127 string cvs (/) print print (:) print
+
+        /Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+
+      } { exit } ifelse 
+
+   } bind loop
+
+   (*) = flush
+
+ restore
+
+"
+
+*End
+
+
+
+*?FontList: "
+
+save
+
+  (*) {cvn ==} 128 string /Font resourceforall
+
+  (*) = flush
+
+restore
+
+"
+
+*End
+
+
+
+*% Printer Messages (verbatim from printer):
+
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+
+*Message: "\FontName\ not found, using Courier"
+
+
+
+*% Status (format: %%[ status: <one of these> ]%% )
+
+*Status: "idle"
+
+*Status: "busy"
+
+*Status: "waiting"
+
+*Status: "printing"
+
+*Status: "warming up"
+
+*Status: "PrinterError: out of paper"
+
+*Status: "PrinterError: printer fault"
+
+*Status: "PrinterError: printer offline"
+
+
+
+*% Input Sources (format: %%[ status: <stat>; source: <one of these> ]%% )
+
+*Source: "AppleTalk"
+
+
+
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%%)
+
+*PrinterError: "out of paper"
+
+*PrinterError: "printer fault"
+
+*PrinterError: "printer offline"
+
+
+
+*%DeviceAdjustMatrix: "[1 0 0 1 0 0]"
+
+
+
+*% Color Separation Information =====================
+
+
+
+*DefaultColorSep: ProcessBlack.65lpi.300dpi/65 lpi / 300 dpi
+
+
+
+
+
+*%  For 65 lpi / 150 dpi
+
+*ColorSepScreenAngle ProcessBlack.65lpi.150dpi/65 lpi / 150 dpi:  "45.0"
+
+*ColorSepScreenAngle CustomColor.65lpi.150dpi/65 lpi / 150 dpi:  "45.0"
+
+*ColorSepScreenAngle ProcessCyan.65lpi.150dpi/65 lpi / 150 dpi:  "15"
+
+*ColorSepScreenAngle ProcessMagenta.65lpi.150dpi/65 lpi / 150 dpi:  "75"
+
+*ColorSepScreenAngle ProcessYellow.65lpi.150dpi/65 lpi / 150 dpi:  "0.0"
+
+
+
+*ColorSepScreenFreq ProcessBlack.65lpi.150dpi/65 lpi / 150 dpi:  "65"
+
+*ColorSepScreenFreq CustomColor.65lpi.150dpi/65 lpi / 150 dpi:  "65"
+
+*ColorSepScreenFreq ProcessCyan.65lpi.150dpi/65 lpi / 150 dpi:  "65"
+
+*ColorSepScreenFreq ProcessMagenta.65lpi.150dpi/65 lpi / 150 dpi:  "65"
+
+*ColorSepScreenFreq ProcessYellow.65lpi.150dpi/65 lpi / 150 dpi:  "65"
+
+
+
+*%  For 65 lpi / 300 dpi
+
+*ColorSepScreenAngle ProcessBlack.65lpi.300dpi/65 lpi / 300 dpi:  "45.0"
+
+*ColorSepScreenAngle CustomColor.65lpi.300dpi/65 lpi / 300 dpi:  "45.0"
+
+*ColorSepScreenAngle ProcessCyan.65lpi.300dpi/65 lpi / 300 dpi:  "15"
+
+*ColorSepScreenAngle ProcessMagenta.65lpi.300dpi/65 lpi / 300 dpi:  "75"
+
+*ColorSepScreenAngle ProcessYellow.65lpi.300dpi/65 lpi / 300 dpi:  "0.0"
+
+
+
+*ColorSepScreenFreq ProcessBlack.65lpi.300dpi/65 lpi / 300 dpi:  "65"
+
+*ColorSepScreenFreq CustomColor.65lpi.300dpi/65 lpi / 300 dpi:  "65"
+
+*ColorSepScreenFreq ProcessCyan.65lpi.300dpi/65 lpi / 300 dpi:  "65"
+
+*ColorSepScreenFreq ProcessMagenta.65lpi.300dpi/65 lpi / 300 dpi:  "65"
+
+*ColorSepScreenFreq ProcessYellow.65lpi.300dpi/65 lpi / 300 dpi:  "65"
+
+
+
+*% The byte count of this file should be exactly 010991 or 011625
+*% depending on the filesystem it resides in.
+*% end of PPD file for Birmy PowerRIP For HP 400
+
