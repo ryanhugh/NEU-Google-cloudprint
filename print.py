@@ -197,7 +197,10 @@ class CloudPrintAuth(object):
                 'grant_type': 'refresh_token',
                 'refresh_token': self.refresh_token,
             }
-        ).json()
+        )
+        print token.content
+
+        token = token.json()
 
         self._access_token = token['access_token']
 
