@@ -18,3 +18,5 @@ Print to NEU Pharos Printers with Google Cloud print!
  3. The PDF is not stored and is never saved to disk. 
  4. An email is sent to mobileprinting@neu.edu with the PDF and your husky email address.
  5. After northeastern processes the document, it is added to the Pharos print queue. 
+
+Code adapted from https://github.com/armooo/cloudprint
