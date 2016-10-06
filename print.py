@@ -384,7 +384,10 @@ def sendMail(to, fro, subject, text, name, fileData=[],server="localhost"):
         part = MIMEBase('application', "octet-stream")
         part.set_payload(file)
         Encoders.encode_base64(part)
-        part.add_header('Content-Disposition', 'attachment; filename="%s.pdf"' % name)
+        if not name.endswith('.pdf')
+        	name = name + '.pdf'
+        
+        part.add_header('Content-Disposition', 'attachment; filename="%s"' % name)
         msg.attach(part)
 
     smtp = smtplib.SMTP(server)
@@ -403,6 +406,7 @@ def process_job(cpp, printer, job):
             del options['request']
 
         options = dict((str(k), str(v)) for k, v in list(options.items()))
+        print options
 
         rawData = pdf.raw.read()
 
