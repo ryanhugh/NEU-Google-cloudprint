@@ -384,7 +384,7 @@ def sendMail(to, fro, subject, text, name, fileData=[],server="localhost"):
         part = MIMEBase('application', "octet-stream")
         part.set_payload(file)
         Encoders.encode_base64(part)
-        if not name.endswith('.pdf')
+        if not name.endswith('.pdf'):
         	name = name + '.pdf'
         
         part.add_header('Content-Disposition', 'attachment; filename="%s"' % name)
