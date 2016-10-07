@@ -198,7 +198,7 @@ class CloudPrintAuth(object):
                 'refresh_token': self.refresh_token,
             }
         )
-        print token.content
+        
 
         token = token.json()
 
@@ -406,7 +406,7 @@ def process_job(cpp, printer, job):
             del options['request']
 
         options = dict((str(k), str(v)) for k, v in list(options.items()))
-        print options
+        
 
         rawData = pdf.raw.read()
 
