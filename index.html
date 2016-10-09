@@ -1,0 +1,265 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
+
+    <title>Carousel Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://v4-alpha.getbootstrap.com/examples/carousel/carousel.css" rel="stylesheet">
+    <style type="text/css">
+    :root #content > #right > .dose > .dosesingle,
+    :root #content > #center > .dose > .dosesingle {
+        display: none !important;
+    }
+    </style>
+
+
+    <script type="text/javascript">
+    function onClick () {
+      var input = document.getElementById('emailEntry');
+      if (!input) {
+        alert('Error occurred, refresh the page :(')
+        return;
+      }
+      var value = input.value;
+
+      if (input.value.length === 0) {
+        return;
+      }
+
+      var removeFromEnd = '@husky.neu.edu'
+
+
+      if (value.endsWith(removeFromEnd)) {
+        console.log("removing @husky.neu.edu from end");
+        value = value.slice(0, value.length - removeFromEnd.length)
+      }
+
+      if (value.indexOf('@') > -1) {
+        alert('Error parsing email, it must end in @husky.neu.edu and it must only have one @ sign in it.');
+        return;
+      }
+
+
+      var oReq = new XMLHttpRequest();
+      oReq.onreadystatechange = function () {
+        if (oReq.readyState != XMLHttpRequest.DONE) {
+          return;
+        }
+        if (oReq.status != 200) {
+          alert('Error sending http request :(. refresh the page and try again.')
+        }
+        else {
+          alert('Success!')            
+        }
+      };
+      oReq.open("POST", "https://www.coursepro.io/sharePrinter");
+      oReq.setRequestHeader("Content-type", "application/json");
+      oReq.send(JSON.stringify({
+        email:value
+      }))
+    }
+
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+
+
+    <div style="height: 447px;background: #2d86fb;margin-bottom: 32px;text-align: center;">
+        <div class="span12">
+            <h1 style="font-size: 105px;margin-bottom: 20px;color: white;padding-top: 99px;font-family: sans-serif;">Google Cloud Print</h1>
+            <h2 style="font-size: 55px;color: white;">For Northeastern</h2>
+        </div>
+    </div>
+
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+
+                <h2>Works anywhere Google Chrome runs</h2>
+                <p>Print from Linux, Mac OS X, Windows, ChromeOS, tablets, phones, and more</p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+
+                <h2>No additional software needed</h2>
+                <p>All the functionallity to use the Cloud Print printer is built into Google Chrome!</p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+
+                <h2>100% free and open source</h2>
+                <p>Documents are never saved</p>
+                <p>
+                    <a class="btn btn-secondary" href="https://github.com/ryanhugh/NEU-Google-cloudprint" role="button">View on Github »</a>
+                </p>
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+
+
+        <style type="text/css">
+        @media (min-width: 768px) {
+            .textBoxThing {
+                display: -webkit-box;
+                -webkit-box-pack: center;
+                -webkit-box-align: center;
+                height: 400px;
+            }
+        }
+        </style>
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider" style="margin:0">
+
+
+        <div class="row featurette">
+            <!-- <div class="col-md-7 push-md-5"> -->
+            <h2 class="featurette-heading">So how does it work?</h2>
+            <p class="lead">In addition to printing to a local printer connected to your computer, Google Chrome can also print to Google Cloud Print. When you print to Cloud Print, Chrome sends a PDF of your document to Google's servers. Then, the PDF is downloaded by a custom python script and sent to Northeastern's print queue. You will receive an email in 2-10 minutes when the document is ready to print. Documents are added to the same queue when printed with the Pharos driver from MyNEU or sent to
+                <a href="http://www.northeastern.edu/its/new-email-to-print-feature-and-plotter-printers/">mobileprinting@neu.edu</a>. Once they are in this queue, you can go to any printer on Northeastern's campus, swipe your husky card, and print away!
+            </p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Enter your @husky.neu.edu email to get started!</h2>
+                <p class="lead">This will share the Google Cloud Print Printer with you. Read the intstructions below to start using it!</p>
+            </div>
+            <div class="col-md-5 textBoxThing" style="vertical-align: middle;padding: 13px;">
+
+                <div class="form-inline" style="vertical-align: middle;text-align: right;">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="emailEntry">
+                            <div class="input-group-addon">@husky.neu.edu</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="margin: 10px;" onclick="onClick()">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+
+        <div class="row featurette">
+            <div class="col-md-5">
+                <h2 class="featurette-heading">Step 1</h2>
+                <p class="lead">Accept the printer invitation</p>
+            </div>
+            <div class="col-md-7">
+                <div style="max-width: 100%;overflow: hidden;">
+                    <img src="img/one.PNG">
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-5">
+                <h2 class="featurette-heading">Step 2</h2>
+                <p class="lead">Accept the printer invitation again o_O</p>
+            </div>
+            <div class="col-md-7">
+                <div style="max-width: 100%;overflow: hidden;">
+                    <img src="img/two.PNG">
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-5">
+                <h2 class="featurette-heading">Step 3</h2>
+                <p class="lead">Click CTRL-P in Google Chrome and click "Change..." on the left</p>
+            </div>
+            <div class="col-md-7">
+                <div style="max-width: 100%;overflow: hidden;max-height: 300px;">
+                    <img src="img/three.PNG">
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-5">
+                <h2 class="featurette-heading">Step 4</h2>
+                <p class="lead">Select your @husky.neu.edu email from the dropdown and then select the printer in the Google Cloud Print section!</p>
+            </div>
+            <div class="col-md-7">
+                <div style="max-width: 100%;overflow: hidden;">
+                    <img src="img/four.PNG" style="margin-left: -304px;">
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr class="featurette-divider" style="margin:0">
+
+
+        <div class="row featurette">
+            <div class="col-md-7 push-md-5">
+                <h2 class="featurette-heading">So what should I print?</h2>
+                <p class="lead">Ben Learner Posters</p>
+            </div>
+            <div class="col-md-5 pull-md-7">
+                <img src="http://i.imgur.com/KsqMvFo.png" style="max-height: 400px;">
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+
+</html>
