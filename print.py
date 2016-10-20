@@ -62,6 +62,8 @@ static_printers = {
    }
 }
 
+PRINTABLE = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!()+,-.:;<=>[\\]^_{|}~ '
+
 static_description = 'PDF'
 static_ppd = open('ppd.txt').read()
 
@@ -409,7 +411,21 @@ def process_job(cpp, printer, job):
         
 
         rawData = pdf.raw.read()
+        
+        if len(job['title']) == 0:
+        	job['title'] = 'document'
+        
+        # Remove all non-whitelisted characters.
+        job['title'] = filter(lambda x: x in PRINTABLE, s)
+        
+		# Trim job title down to 30 characters
+        if len(job['title']) > 30:
+            job['title'] = job['title'][:30]
+            print 'Trimmed length of title', job['title']
 
+        if len(job['title']) == 0:
+        	job['title'] = 'document'
+		
 
         if not job['ownerId'].endswith('husky.neu.edu'):
             print 'Sending invalid username email to ', job['ownerId']
