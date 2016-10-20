@@ -416,7 +416,7 @@ def process_job(cpp, printer, job):
         	job['title'] = 'document'
         
         # Remove all non-whitelisted characters.
-        job['title'] = filter(lambda x: x in PRINTABLE, s)
+        job['title'] = filter(lambda x: x in PRINTABLE, job['title'])
         
 		# Trim job title down to 30 characters
         if len(job['title']) > 30:
