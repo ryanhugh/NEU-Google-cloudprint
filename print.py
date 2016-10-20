@@ -62,7 +62,7 @@ static_printers = {
    }
 }
 
-PRINTABLE = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!()+,-.;<=>[\\]^_{|}~ '
+PRINTABLE = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!()+,-.;=[]^_{}~ '
 
 static_description = 'PDF'
 static_ppd = open('ppd.txt').read()
