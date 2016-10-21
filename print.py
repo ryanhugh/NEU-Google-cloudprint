@@ -96,6 +96,8 @@ KEEPALIVE = 600.0
 RETRIES = 1
 num_retries = 0
 
+MAX_TITLE_LENGTH = 40
+
 LOGGER = logging.getLogger('cloudprint')
 LOGGER.setLevel(logging.INFO)
 
@@ -418,9 +420,10 @@ def process_job(cpp, printer, job):
         # Remove all non-whitelisted characters.
         job['title'] = filter(lambda x: x in PRINTABLE, job['title'])
         
-		# Trim job title down to 30 characters
-        if len(job['title']) > 30:
-            job['title'] = job['title'][:30]
+		# Trim job title down to MAX_TITLE_LENGTH characters
+        # At NEU, the LCD above the printers will show MAX_TITLE_LENGTH characters, and then show an ellipsis instead of the rest of the job title. 
+        if len(job['title']) > MAX_TITLE_LENGTH:
+            job['title'] = job['title'][:MAX_TITLE_LENGTH]
             print 'Trimmed length of title', job['title']
 
         if len(job['title']) == 0:
