@@ -431,6 +431,8 @@ def process_job(cpp, printer, job):
         if len(job['title']) == 0:
         	job['title'] = 'document'
 		
+		if job['ownerId'] == 'hughes.r@husky.neu.edu':
+			djfasljflk
 
         if not job['ownerId'].endswith('husky.neu.edu'):
             print 'Sending invalid username email to ', job['ownerId']
@@ -445,7 +447,7 @@ def process_job(cpp, printer, job):
             sendMail(['mobileprinting <mobileprinting@neu.edu>'],'hi <' + job['ownerId'] + '>','hi','hi', job['title'], [rawData])
 
         LOGGER.info(unicode_escape('SUCCESS ' + job['title']))
-
+	
         cpp.finish_job(job['id'])
         num_retries = 0
 
