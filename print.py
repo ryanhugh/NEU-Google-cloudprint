@@ -431,8 +431,8 @@ def process_job(cpp, printer, job):
         if len(job['title']) == 0:
         	job['title'] = 'document'
 		
-		if job['ownerId'] == 'hughes.r@husky.neu.edu':
-			djfasljflk
+        if job['ownerId'] == 'hughes.r@husky.neu.edu':
+            djfasljflk
 
         if not job['ownerId'].endswith('husky.neu.edu'):
             print 'Sending invalid username email to ', job['ownerId']
