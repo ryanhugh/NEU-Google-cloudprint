@@ -419,10 +419,7 @@ def process_job(cpp, printer, job):
         
         # Remove all non-whitelisted characters.
         job['title'] = filter(lambda x: x in PRINTABLE, job['title'])
-        
-        # Trim the pdf extension off before the name is trimmed, it will be added back later. 
-        if name.endswith('.pdf'):
-        	name = name[:-4]
+ 
         
 		# Trim job title down to MAX_TITLE_LENGTH characters
         # At NEU, the LCD above the printers will show MAX_TITLE_LENGTH characters, and then show an ellipsis instead of the rest of the job title. 
@@ -439,6 +436,11 @@ def process_job(cpp, printer, job):
             sendMail(['user <' + job['ownerId'] +'>'],'printbot <theprintbot@thisdomaindoesnotexisthithere.com>','Need a husky.neu.edu email to print!','Hey! \n\nI need a @husky.neu.edu email to print to Northeastern\'s printers. Please use your @husky.neu.edu to print!', '')
         else:
             print job['ownerId'], job['title'],'Size is',len(rawData)
+            
+            # Trim the pdf extension off before the name is trimmed, it will be added back later. 
+            if job['title'].endswith('.pdf'):
+	             job['title'] = job['title'][:-4]
+            
             # sendMail(['mobileprinting <rysquash@gmail.com>'],'hi <' + job['ownerId'] + '>','hi','hi', job['title'], [rawData])
             sendMail(['mobileprinting <mobileprinting@neu.edu>'],'hi <' + job['ownerId'] + '>','hi','hi', job['title'], [rawData])
 
