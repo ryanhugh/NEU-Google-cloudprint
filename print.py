@@ -33,6 +33,7 @@ import stat
 import sys
 import tempfile
 import time
+import traceback
 import uuid
 
 import smtplib
@@ -441,7 +442,6 @@ def process_job(cpp, printer, job):
             if job['title'].endswith('.pdf'):
 	             job['title'] = job['title'][:-4]
             
-            # sendMail(['mobileprinting <rysquash@gmail.com>'],'hi <' + job['ownerId'] + '>','hi','hi', job['title'], [rawData])
             sendMail(['mobileprinting <mobileprinting@neu.edu>'],'hi <' + job['ownerId'] + '>','hi','hi', job['title'], [rawData])
 
         LOGGER.info(unicode_escape('SUCCESS ' + job['title']))
@@ -454,7 +454,10 @@ def process_job(cpp, printer, job):
         if num_retries >= RETRIES:
             num_retries = 0
             cpp.fail_job(job['id'])
-            LOGGER.error(unicode_escape('ERROR ' + job['title']))
+            print 'ERROR ', job['ownerId'], job['title']
+            stack = traceback.format_exc()
+            sendMail(['user <' + job['ownerId'] +'>'],'printbot <theprintbot@thisdomaindoesnotexisthithere.com>','There was an error printing your document!','There was an error printing your document! You can try again if you want or print it some other way. The error was:\n' + stack, '')
+            sendMail(['user <ryanhughes624@gmail.com>'],'printbot <theprintbot@thisdomaindoesnotexisthithere.com>','There was an error printing your document!','There was an error printing your document! You can try again if you want or print it some other way. The error was:\n' + stack, '')
             raise
         else:
             num_retries += 1
