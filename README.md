@@ -1,4 +1,6 @@
-Print to NEU Pharos Printers with Google Cloud print!
+Print to NEU Pharos Printers with Google Cloud print!  
+
+(If you ever get a printer offline error shoot me an email at ryanhughes624@gmail.com and I'll fix it)
 
 ## How to use
  1. Send me your @husky.neu.edu email address, and I will share the printer with you.
