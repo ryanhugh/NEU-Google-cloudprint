@@ -1,3 +1,5 @@
+# Unfortunately this project no longer works. It worked great for a while and had a bunch of users but then NEU changed something on their end that stopped this from working. :( I am actively interested in finding alternate ways to send print jobs to NEU's servers, so if you hear of something, let me know!
+
 Print to NEU Pharos Printers with Google Cloud print!  
 
 (If you ever get a printer offline error shoot me an email at ryanhughes624@gmail.com and I'll fix it)
